@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+</head>
+
+<body>
+    <div>
+        <h1>Welcome to My To Do List Again Again</h1>
+<p>{% if message %}
+    {{message}}
+    {% endif %}
+</p>
+<p>See complete tasks <a href="/complete">HERE</a></p>
+        <form action="/add" method="post">
+            <div>
+                <label>Todo task</label>
+                <input type="text" name="task" placeholder="Enter a Task">
+                <button type="submit">Add a Task</button>
+            </div>
+        </form>
+
+        <hr>
+        {% for todo in todo_list %}
+
+        <div class="task">
+            <div class="task-id">{{todo.id}}</div>
+            <div class="button-holder">
+                <p>{{ todo.task }}</p>
+                {% if todo.complete==False %}
+                <p>Task Incomplete. <a href="/update/{{ todo.id }}">Mark as complete?</a></p>
+                {% else %}
+                <p>Task Complete</p>
+                {% endif %}
+            </div>
+            <div class="stacked"> <a class="button-like"
+                    href="/delete/{{ todo.id }}">Delete Task</a></div>
+                    <hr>
+        </div>
+        
+        {% endfor %}
+        <img src="{{url_for('static', filename='images/main_plot.png')}}">
+</body>
+
+</html>
