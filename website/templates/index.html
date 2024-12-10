@@ -4,24 +4,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todo App</title>
+    <title>Gacha Tracker</title>
 </head>
 
 <body>
     <div>
-        <h1>Welcome to My To Do List Again Again</h1>
+        <h1>Gacha Tracker</h1>
 <p>{% if message %}
     {{message}}
     {% endif %}
 </p>
-<p>See complete tasks <a href="/complete">HERE</a></p>
-        <form action="/add" method="post">
+        <form action="/form_select" method="post">
             <div>
-                <label>Todo task</label>
-                <input type="text" name="task" placeholder="Enter a Task">
-                <button type="submit">Add a Task</button>
+                <label for="game_names">Choose a game:</label>
+
+                    <select name="games_names" id="gameNames">
+                    <option value="wor">Watcher of Realms</option>
+                    <option value="omni">OmniHeroes</option>
+                    <option value="genshin">Genshin Impact</option>
+                    </select>
+
+                <button type="submit">Enter Game</button>
             </div>
         </form>
+
+        {% if form_type == "wor" %}
+        <p>WOR form</p>
+        {% elif form_type == "other" %}
+        <p>OTher</p>
+        {% else %}
+        <p>select a game  above pls</p>
+        {% endif %}
 
         <hr>
         {% for todo in todo_list %}
@@ -42,7 +55,6 @@
         </div>
         
         {% endfor %}
-        <img src="{{url_for('static', filename='images/main_plot.png')}}">
 </body>
 
 </html>

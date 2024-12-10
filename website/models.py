@@ -1,6 +1,6 @@
 from . import db
 
-class PullRecordWOR(db.Model):
+class PullRecord(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     currency_used = db.Column(db.String(300), nullable=False)
     event_active = db.Column(db.Boolean, default = False)

@@ -11,7 +11,7 @@ def create_app():
     from .views import my_view
     app.register_blueprint(my_view)
 
-    from .models import Todo
+    from .models import PullRecord
     with app.app_context():
         db.create_all()
 
