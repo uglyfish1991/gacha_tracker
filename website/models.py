@@ -1,11 +1,15 @@
 from . import db
+from datetime import datetime
+from sqlalchemy import func
 
 class PullRecord(db.Model):
     id = db.Column(db.Integer, primary_key = True)
+    timestamp = db.Column(db.DateTime, default=func.now(), nullable=False)
     currency_used = db.Column(db.String(300), nullable=False)
-    event_active = db.Column(db.Boolean, default = False)
-    event_name = db.Column(db.String(300))
+    summon_type = db.Column(db.String(300), nullable=False)
     character_name = db.Column(db.String(300), nullable=False)
     character_rarity = db.Column(db.String(300), nullable=False)
     character_faction = db.Column(db.String(300), nullable=False)
+    second_faction = db.Column(db.String(300), nullable=False)
+    lord_hero = db.Column(db.Boolean, default = False)
     owned_before = db.Column(db.Boolean, default = False)

@@ -10,10 +10,10 @@
 <body>
     <div>
         <h1>Gacha Tracker</h1>
-<p>{% if message %}
-    {{message}}
-    {% endif %}
-</p>
+        <p>{% if message %}
+            {{message}}
+            {% endif %}
+        </p>
         <form action="/form_select" method="post">
             <div>
                 <label for="game_names">Choose a game:</label>
@@ -27,34 +27,82 @@
                 <button type="submit">Enter Game</button>
             </div>
         </form>
+        <hr>
 
         {% if form_type == "wor" %}
-        <p>WOR form</p>
+            <p>WOR form</p>
+            <form action ="/add_wor" method = "POST">
+                    <!-- Currency Selection -->
+                    <label for="currency_used">Choose a currency:</label>
+                    <select name="currency_used" id="currency_used" aria-label="Select a currency">
+                        <option value="gems">Gems</option>
+                        <option value="blue">Rare</option>
+                        <option value="red">Ancient</option>
+                        <option value="gold">Legendary</option>
+                    </select>
+                
+                    <!-- Summon Type / Event Selection -->
+                    <label for="summon_type">Summon Type / Event:</label>
+                    <select name="summon_type" id="summon_type" aria-label="Select summon type or event">
+                        <option value="invo">Invocation of Spirits</option>
+                        <option value="divine">Divine</option>
+                    </select>
+                
+                    <!-- Character Name Input -->
+                    <label for="character_name">Character Name:</label>
+                    <input type="text" id="character_name" name="character_name" required aria-describedby="character-name-description">
+                
+                    <!-- Rarity Selection -->
+                    <label for="rarity">Rarity:</label>
+                    <select name="rarity" id="rarity" aria-label="Select rarity">
+                        <option value="two">**</option>
+                        <option value="three">***</option>
+                        <option value="four">****</option>
+                        <option value="five">*****</option>
+                    </select>
+                
+                    <!-- Faction Selection -->
+                    <label for="faction">Faction:</label>
+                    <select name="faction" id="faction" aria-label="Select faction">
+                        <option value="facts">Faction 1</option>
+                        <option value="faction2">Faction 2</option>
+                        <option value="faction3">Faction 3</option>
+                    </select>
+                
+                    <!-- Second Faction Selection -->
+                    <label for="second_faction">Second Faction:</label>
+                    <select name="second_faction" id="second_faction" aria-label="Select second faction">
+                        <option value="facts">Faction 1</option>
+                        <option value="faction2">Faction 2</option>
+                        <option value="faction3">Faction 3</option>
+                    </select>
+                
+                    <!-- Owned Before Radio Button -->
+                    <fieldset>
+                        <legend>Lord Hero:</legend>
+                        <input type="radio" id="yes" name="lord_hero" value="yes" aria-label="Yes, the hero is a Lord">
+                        <label for="yes">Yes</label><br>
+                        <input type="radio" id="no" name="lord_hero" value="no" aria-label="No, the hero is not a Lord">
+                        <label for="no">No</label><br>
+                    </fieldset>
+                
+                    <!-- Submit Button -->
+                    <button type="submit">Submit Record</button>
+                </form>
+                
         {% elif form_type == "other" %}
-        <p>OTher</p>
+            <p>Other</p>
         {% else %}
-        <p>select a game  above pls</p>
+            <p>select a game above pls</p>
         {% endif %}
+<hr>
+{% if record_collection %}
+{% for record in record_collection %}
+{{record.character_name}}<br>
+{{record.lord_hero}}
+{{record.owned_before}}
+{% endfor %}
+{% endif %}
 
-        <hr>
-        {% for todo in todo_list %}
-
-        <div class="task">
-            <div class="task-id">{{todo.id}}</div>
-            <div class="button-holder">
-                <p>{{ todo.task }}</p>
-                {% if todo.complete==False %}
-                <p>Task Incomplete. <a href="/update/{{ todo.id }}">Mark as complete?</a></p>
-                {% else %}
-                <p>Task Complete</p>
-                {% endif %}
-            </div>
-            <div class="stacked"> <a class="button-like"
-                    href="/delete/{{ todo.id }}">Delete Task</a></div>
-                    <hr>
-        </div>
-        
-        {% endfor %}
 </body>
-
 </html>
