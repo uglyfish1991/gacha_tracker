@@ -37,20 +37,29 @@
 */
 body{
     margin: 0px;
-    background: rgb(243, 243, 243);
+    background: rgb(227, 227, 227);
     box-sizing: border-box;
 }
 
 header{
-    background: rgb(2,0,36);
-    background: linear-gradient(3deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 100%, rgba(0,212,255,1) 100%);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
+    background: rgb(2,0,20);
+    background: linear-gradient(0deg, rgba(2,0,20,1) 0%, rgba(8,8,92,1) 36%);
     padding: 0px 60px;
 }
 
+a{
+    padding: 0 7px; 
+    color: white;
+    text-decoration: none;
+}
 
+nav > a {
+    font-size: 1.2rem;
+    border-right: solid 1px #eff0f1;
+  }
+  nav > a:last-of-type {
+    border-right: none;
+  }
 
 h1{
     color: white;
@@ -102,11 +111,11 @@ h1{
 */
 
 h1 img{
-    width: 60px;
+    width: 50px;
 }
 
 .selection-area{
-    width: 80%;
+    width: 72%;
     height: 70vh;
     margin-bottom: 20px;
 }

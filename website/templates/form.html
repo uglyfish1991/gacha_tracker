@@ -11,7 +11,7 @@
 <body>
     <div>
         <header class="flex-rows rows-spaced-between rows-aligned-centre">
-            <h1 class="carrois-gothic-sc-regular"><a href="{{ url_for("my_view.home")}}"><img src="/static/images/tick.png">Gacha Tracker</a></h1>
+            <h1 class="carrois-gothic-sc-regular"><img src="/static/images/tick.png">Gacha Tracker</h1>
             <nav class="roboto-medium">
                 <a href = "#">A Link </a>
                 <a href = "#">A Link </a>
@@ -24,29 +24,8 @@
             {{message}}
             {% endif %}
         </p>
-        <form action="/form_select" method="POST">
-            <div class="selection-area centred flex-rows rows-spaced-even">
-                <input type="radio" name="games_names" value="omni" id="omniSelect" style="display: none;">
-                <input type="radio" name="games_names" value="genshin" id="genSelect" style="display: none;">
-                <input type="radio" name="games_names" value="wor" id="worSelect" style="display: none;">
-
-                <label for="omniSelect">
-                    <img src="/static/images/omni_select.jpg" alt="Select OmniHeroes">
-                </label>
-                <label for="genSelect">
-                    <img src="/static/images/gen_select.jpg" alt="Select Genshin Impact">
-                </label>
-                <label for="worSelect">
-                    <img src="/static/images/wor_select.jpg" alt="Select Watcher of Realms">
-                </label>
-            </div>
-                    <!-- Submit Button -->
-        <button type="submit" style="display: none;">Submit</button>
-        </form>
-        <hr>
-
-        {% if form_type == "wor" %}
-            <p>WOR form</p>
+<div>
+<img src="/static/images/{{form_type}}_select.jpg">
             <form action ="/add_wor" method = "POST">
                     <!-- Currency Selection -->
                     <label for="currency_used">Choose a currency:</label>
@@ -105,44 +84,7 @@
                     <!-- Submit Button -->
                     <button type="submit">Submit Record</button>
                 </form>
-                
-        {% elif form_type == "other" %}
-            <p>Other</p>
-        {% else %}
-            <p>select a game above pls</p>
-        {% endif %}
-<hr>
-{% if record_collection %}
-{% for record in record_collection %}
-{{record.character_name}}<br>
-{{record.lord_hero}}
-{{record.owned_before}}
-{% endfor %}
-{% endif %}
 
-<script>
-    // Select all label elements
-    document.querySelectorAll('label').forEach(function(label) {
-        label.addEventListener('click', function() {
-            // Trigger the radio button selection manually if not already selected
-            const radio = document.querySelector(`input[name="games_names"]:checked`);
-            if (!radio) {
-                // If no radio button is selected, trigger it manually
-                const radioId = label.getAttribute('for');
-                const selectedRadio = document.getElementById(radioId);
-                selectedRadio.checked = true;
-            }
-            
-            // Check if the radio is selected and submit the form
-            const selectedRadio = document.querySelector('input[name="games_names"]:checked');
-            console.log(selectedRadio); // Should log the selected radio button
-
-            if (selectedRadio) {
-                this.closest('form').submit(); // Submit the form if the radio is checked
-            }
-        });
-    });
-</script>
-
+            </div>
 </body>
 </html>

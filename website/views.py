@@ -21,7 +21,16 @@ def form_select():
         form_type = "wor"
     else:
         form_type="other"
-    return redirect(url_for("my_view.home", form_type=form_type))
+    return render_template("form.html", form_type=form_type)
+
+# @my_view.route("/form_select", methods=["POST"])
+# def form_select():
+#     print(f"{request.form.get('games_names')}")
+#     if request.form.get("games_names") == "wor":
+#         form_type = "wor"
+#     else:
+#         form_type="other"
+#     return redirect(url_for("my_view.home", form_type=form_type))
 
 @my_view.route("/add_wor", methods = ["POST"])
 def add_wor():
