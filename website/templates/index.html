@@ -5,27 +5,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gacha Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 
 <body>
     <div>
-        <h1>Gacha Tracker</h1>
+        <header class="flex-rows rows-spaced-between rows-aligned-centre">
+            <h1 class="carrois-gothic-sc-regular"><img src="/static/images/tick.png">Gacha Tracker</h1>
+            <nav>
+                <a href = "#"> A Link</a>
+                <a href = "#"> A Link</a>
+                <a href = "#"> A Link</a>
+            </nav>
+
+        </header>
+        
         <p>{% if message %}
             {{message}}
             {% endif %}
         </p>
-        <form action="/form_select" method="post">
-            <div>
-                <label for="game_names">Choose a game:</label>
+        <form action="/form_select" method="POST">
+            <div class="selection-area centred flex-rows rows-spaced-even">
+                <input type="radio" name="games_names" value="omni" id="omniSelect" style="display: none;">
+                <input type="radio" name="games_names" value="genshin" id="genSelect" style="display: none;">
+                <input type="radio" name="games_names" value="wor" id="worSelect" style="display: none;">
 
-                    <select name="games_names" id="gameNames">
-                    <option value="wor">Watcher of Realms</option>
-                    <option value="omni">OmniHeroes</option>
-                    <option value="genshin">Genshin Impact</option>
-                    </select>
-
-                <button type="submit">Enter Game</button>
+                <label for="omniSelect">
+                    <img src="/static/images/omni_select.jpg" alt="Select OmniHeroes">
+                </label>
+                <label for="genSelect">
+                    <img src="/static/images/gen_select.jpg" alt="Select Genshin Impact">
+                </label>
+                <label for="worSelect">
+                    <img src="/static/images/wor_select.jpg" alt="Select Watcher of Realms">
+                </label>
             </div>
+                    <!-- Submit Button -->
+        <button type="submit" style="display: none;">Submit</button>
         </form>
         <hr>
 
@@ -103,6 +119,30 @@
 {{record.owned_before}}
 {% endfor %}
 {% endif %}
+
+<script>
+    // Select all label elements
+    document.querySelectorAll('label').forEach(function(label) {
+        label.addEventListener('click', function() {
+            // Trigger the radio button selection manually if not already selected
+            const radio = document.querySelector(`input[name="games_names"]:checked`);
+            if (!radio) {
+                // If no radio button is selected, trigger it manually
+                const radioId = label.getAttribute('for');
+                const selectedRadio = document.getElementById(radioId);
+                selectedRadio.checked = true;
+            }
+            
+            // Check if the radio is selected and submit the form
+            const selectedRadio = document.querySelector('input[name="games_names"]:checked');
+            console.log(selectedRadio); // Should log the selected radio button
+
+            if (selectedRadio) {
+                this.closest('form').submit(); // Submit the form if the radio is checked
+            }
+        });
+    });
+</script>
 
 </body>
 </html>

@@ -16,6 +16,7 @@ def home():
 
 @my_view.route("/form_select", methods=["POST"])
 def form_select():
+    print(f"{request.form.get('games_names')}")
     if request.form.get("games_names") == "wor":
         form_type = "wor"
     else:
