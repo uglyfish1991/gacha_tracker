@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+{% if record_collection %}
+
+
+<table>
+    <tr>
+      <th>ID</th>
+      <th>Date Pulled</th>
+      <th>Character Name</th>
+      <th>Currency Used</th>
+      <th>Summon Event</th>
+      <th>Rarity</th>
+      <th>Main Faction</th>
+      <th>Second Faction</th>
+      <th>Lord?</th>
+      <th>Owned Already?</th>
+    </tr>
+    {% for record in record_collection %}
+    <tr>
+      <td>{{record.id}}</td>
+      <td>{{record.timestamp}}</td>
+      <td>{{record.character_name}}</td>
+      <td>{{record.currency_used}}</td>
+      <td>{{record.summon_type}}</td>
+      <td>{{record.character_rarity}}</td>
+      <td>{{record.character_faction}}</td>
+      <td>{{record.second_faction}}</td>
+      <td>{{record.lord_hero}}</td>
+      <td>{{record.owned_before}}</td>
+    </tr>
+    {% endfor %}
+    </table>
+
+{% endif %}
+
+{% endblock %}

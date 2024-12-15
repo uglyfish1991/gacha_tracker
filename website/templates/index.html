@@ -1,29 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gacha Tracker</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-</head>
-
-<body>
-    <div>
-        <header class="flex-rows rows-spaced-between rows-aligned-centre">
-            <h1 class="carrois-gothic-sc-regular"><a href="{{ url_for("my_view.home")}}"><img src="/static/images/tick.png">Gacha Tracker</a></h1>
-            <nav class="roboto-medium">
-                <a href = "#">A Link </a>
-                <a href = "#">A Link </a>
-                <a href = "#">A Link </a>
-            </nav>
-
-        </header>
-        <hr>
-        <p>{% if message %}
-            {{message}}
-            {% endif %}
-        </p>
+{% block content %}
         <form action="/form_select" method="POST">
             <div class="selection-area centred flex-rows rows-spaced-even">
                 <input type="radio" name="games_names" value="omni" id="omniSelect" style="display: none;">
@@ -44,82 +21,9 @@
         <button type="submit" style="display: none;">Submit</button>
         </form>
         <hr>
-
-        {% if form_type == "wor" %}
-            <p>WOR form</p>
-            <form action ="/add_wor" method = "POST">
-                    <!-- Currency Selection -->
-                    <label for="currency_used">Choose a currency:</label>
-                    <select name="currency_used" id="currency_used" aria-label="Select a currency">
-                        <option value="gems">Gems</option>
-                        <option value="blue">Rare</option>
-                        <option value="red">Ancient</option>
-                        <option value="gold">Legendary</option>
-                    </select>
-                
-                    <!-- Summon Type / Event Selection -->
-                    <label for="summon_type">Summon Type / Event:</label>
-                    <select name="summon_type" id="summon_type" aria-label="Select summon type or event">
-                        <option value="invo">Invocation of Spirits</option>
-                        <option value="divine">Divine</option>
-                    </select>
-                
-                    <!-- Character Name Input -->
-                    <label for="character_name">Character Name:</label>
-                    <input type="text" id="character_name" name="character_name" required aria-describedby="character-name-description">
-                
-                    <!-- Rarity Selection -->
-                    <label for="rarity">Rarity:</label>
-                    <select name="rarity" id="rarity" aria-label="Select rarity">
-                        <option value="two">**</option>
-                        <option value="three">***</option>
-                        <option value="four">****</option>
-                        <option value="five">*****</option>
-                    </select>
-                
-                    <!-- Faction Selection -->
-                    <label for="faction">Faction:</label>
-                    <select name="faction" id="faction" aria-label="Select faction">
-                        <option value="facts">Faction 1</option>
-                        <option value="faction2">Faction 2</option>
-                        <option value="faction3">Faction 3</option>
-                    </select>
-                
-                    <!-- Second Faction Selection -->
-                    <label for="second_faction">Second Faction:</label>
-                    <select name="second_faction" id="second_faction" aria-label="Select second faction">
-                        <option value="facts">Faction 1</option>
-                        <option value="faction2">Faction 2</option>
-                        <option value="faction3">Faction 3</option>
-                    </select>
-                
-                    <!-- Owned Before Radio Button -->
-                    <fieldset>
-                        <legend>Lord Hero:</legend>
-                        <input type="radio" id="yes" name="lord_hero" value="yes" aria-label="Yes, the hero is a Lord">
-                        <label for="yes">Yes</label><br>
-                        <input type="radio" id="no" name="lord_hero" value="no" aria-label="No, the hero is not a Lord">
-                        <label for="no">No</label><br>
-                    </fieldset>
-                
-                    <!-- Submit Button -->
-                    <button type="submit">Submit Record</button>
-                </form>
-                
-        {% elif form_type == "other" %}
-            <p>Other</p>
-        {% else %}
-            <p>select a game above pls</p>
-        {% endif %}
-<hr>
-{% if record_collection %}
-{% for record in record_collection %}
-{{record.character_name}}<br>
-{{record.lord_hero}}
-{{record.owned_before}}
-{% endfor %}
-{% endif %}
-
+<section class ="roboto-medium">
+    <p>Click on an image above to add a new record into the tracker</p>
+</section>
 <script>
     // Select all label elements
     document.querySelectorAll('label').forEach(function(label) {
@@ -143,6 +47,4 @@
         });
     });
 </script>
-
-</body>
-</html>
+{% endblock %}

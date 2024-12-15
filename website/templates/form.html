@@ -1,32 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gacha Tracker</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-</head>
-
-<body>
-    <div>
-        <header class="flex-rows rows-spaced-between rows-aligned-centre">
-            <h1 class="carrois-gothic-sc-regular"><img src="/static/images/tick.png">Gacha Tracker</h1>
-            <nav class="roboto-medium">
-                <a href = "#">A Link </a>
-                <a href = "#">A Link </a>
-                <a href = "#">A Link </a>
-            </nav>
-
-        </header>
-        <hr>
-        <p>{% if message %}
-            {{message}}
-            {% endif %}
-        </p>
-<div>
+{% block content %}
+<div class = "flex-rows rows-spaced-even form-area centred">
 <img src="/static/images/{{form_type}}_select.jpg">
-            <form action ="/add_wor" method = "POST">
+            <form action ="/add_wor" method = "POST" class = "record-submission roboto-medium">
+
+                    <!-- Character Name Input -->
+                    <label for="character_name">Character Name:</label>
+                    <input type="text" id="character_name" name="character_name" required aria-describedby="character-name-description">
+
                     <!-- Currency Selection -->
                     <label for="currency_used">Choose a currency:</label>
                     <select name="currency_used" id="currency_used" aria-label="Select a currency">
@@ -42,10 +24,6 @@
                         <option value="invo">Invocation of Spirits</option>
                         <option value="divine">Divine</option>
                     </select>
-                
-                    <!-- Character Name Input -->
-                    <label for="character_name">Character Name:</label>
-                    <input type="text" id="character_name" name="character_name" required aria-describedby="character-name-description">
                 
                     <!-- Rarity Selection -->
                     <label for="rarity">Rarity:</label>
@@ -80,11 +58,14 @@
                         <input type="radio" id="no" name="lord_hero" value="no" aria-label="No, the hero is not a Lord">
                         <label for="no">No</label><br>
                     </fieldset>
+
+                    <!---Date Summon Completed-->
+                    <label for="birthday">Date Summoned:</label>
+                    <input type="date" id="summonDate" name="summon_date">
                 
                     <!-- Submit Button -->
                     <button type="submit">Submit Record</button>
                 </form>
 
             </div>
-</body>
-</html>
+{% endblock %}

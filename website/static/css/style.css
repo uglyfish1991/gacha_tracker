@@ -36,7 +36,7 @@
 
 */
 body{
-    margin: 0px;
+    margin: 20px;
     background: rgb(227, 227, 227);
     box-sizing: border-box;
 }
@@ -130,4 +130,27 @@ h1 img{
     transform: scale(1.02);
     transition-duration: 1s;
     cursor: pointer;
+}
+
+.form-area{
+    max-height: 90vh;
+    overflow: auto;
+    width: 80%;
+    background-color: white;
+    padding: 20px;
+}
+
+.form-area img{
+    height: 70vh;
+    margin-right: 30px;
+}
+
+.record-submission{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.record-submission input, .record-submission select, .record-submission button{
+    margin-bottom: 10px;
 }
