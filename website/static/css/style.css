@@ -36,15 +36,16 @@
 
 */
 body{
-    margin: 20px;
+    margin: 0px;
     background: rgb(227, 227, 227);
     box-sizing: border-box;
 }
 
 header{
-    background: rgb(2,0,20);
-    background: linear-gradient(0deg, rgba(2,0,20,1) 0%, rgba(8,8,92,1) 36%);
+    background: rgb(13, 13, 58);
+    /* background: linear-gradient(0deg, rgba(2,0,20,1) 0%, rgba(8,8,92,1) 36%); */
     padding: 0px 60px;
+    height: 23vh;
 }
 
 a{
@@ -153,4 +154,12 @@ h1 img{
 
 .record-submission input, .record-submission select, .record-submission button{
     margin-bottom: 10px;
+}
+
+header img{
+    max-height: 21vh;
+}
+
+.right{
+    flex-grow: 1;
 }

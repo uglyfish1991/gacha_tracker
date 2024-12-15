@@ -3,6 +3,11 @@
 {% block content %}
 <div class = "flex-rows rows-spaced-even form-area centred">
 <img src="/static/images/{{form_type}}_select.jpg">
+<div class = "right">
+    <details>
+    <summary>
+        Click to enter a new record:
+    </summary>
             <form action ="/add_wor" method = "POST" class = "record-submission roboto-medium">
 
                     <!-- Character Name Input -->
@@ -66,6 +71,19 @@
                     <!-- Submit Button -->
                     <button type="submit">Submit Record</button>
                 </form>
-
+            </details>
+            <details>
+                <summary>
+                    See the last ten records
+                </summary>
+                last ten records listed here, and a a link to the full table
+            </details>
+            <details>
+                <summary>
+                    See some pull statistics!
+                </summary>
+                pull stats like average pull between legendaries, most pulled hero etc
+            </details>
+            </div>
             </div>
 {% endblock %}

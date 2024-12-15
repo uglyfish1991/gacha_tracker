@@ -19,6 +19,10 @@ def form_select():
     print(f"{request.form.get('games_names')}")
     if request.form.get("games_names") == "wor":
         form_type = "wor"
+    elif request.form.get("games_names") == "genshin":
+         form_type = "genshin"
+    elif request.form.get("games_names") == "omni":
+         form_type = "omni"
     else:
         form_type="other"
     return render_template("form.html", form_type=form_type)
