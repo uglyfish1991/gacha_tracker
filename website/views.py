@@ -1,10 +1,9 @@
 from flask import Flask, Blueprint, render_template, request, redirect, url_for
 from .models import PullRecord
 from . import db
+from .game_info import wor_info, genshin_info, omni_info
 from datetime import date
-# import matplotlib
-# matplotlib.use("Agg")
-# import matplotlib.pyplot as plt
+
 
 
 my_view = Blueprint("my_view", __name__)
@@ -19,13 +18,16 @@ def form_select():
     print(f"{request.form.get('games_names')}")
     if request.form.get("games_names") == "wor":
         form_type = "wor"
+        game_stats = wor_info
     elif request.form.get("games_names") == "genshin":
          form_type = "genshin"
+         game_stats = genshin_info
     elif request.form.get("games_names") == "omni":
          form_type = "omni"
+         game_stats = omni_info
     else:
         form_type="other"
-    return render_template("form.html", form_type=form_type)
+    return render_template("form.html", form_type=form_type, game_stats = game_stats)
 
 @my_view.route("/records")
 def view_records():
