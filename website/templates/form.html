@@ -5,31 +5,34 @@
 <img src="/static/images/{{form_type}}_select.jpg">
 <div class = "right">
     <p>Put some general stats about the same here - what it is, how many summons I've done. Stuff like that.</p>
-    <p>The game is {{game_stats["name"]}}</p>
+    <p>The game is {{game_stats["game_name"]}}</p>
     <details>
     <summary>
         Click to enter a new record:
     </summary>
-            <form action ="/add_wor" method = "POST" class = "record-submission roboto-medium">
+            <form action ="/add_record" method = "POST" class = "record-submission roboto-medium">
+
+                    <!-- Hidden field that sends the variable without showing it -->
+                    <input type="hidden" name="game_name" value="{{game_stats['game_name']}}">
 
                     <!-- Character Name Input -->
                     <label for="character_name">Character Name:</label>
                     <input type="text" id="character_name" name="character_name" required aria-describedby="character-name-description">
 
                     <!-- Currency Selection -->
-                    <label for="currency_used">Choose a currency:</label>
+                    <label for="currency_used">Select the currency used:</label>
                     <select name="currency_used" id="currency_used" aria-label="Select a currency">
-                        <option value="gems">Gems</option>
-                        <option value="blue">Rare</option>
-                        <option value="red">Ancient</option>
-                        <option value="gold">Legendary</option>
+                        {% for currency in game_stats["currencies"] %}
+                        <option value="{{currency}}">{{currency}}</option>
+                        {% endfor %}
                     </select>
                 
                     <!-- Summon Type / Event Selection -->
                     <label for="summon_type">Summon Type / Event:</label>
                     <select name="summon_type" id="summon_type" aria-label="Select summon type or event">
-                        <option value="invo">Invocation of Spirits</option>
-                        <option value="divine">Divine</option>
+                        {% for event in game_stats["summon_event"] %}
+                        <option value="{{event}}">{{event}}</option>
+                        {% endfor %}
                     </select>
                 
                     <!-- Rarity Selection -->
@@ -42,27 +45,27 @@
                     </select>
                 
                     <!-- Faction Selection -->
-                    <label for="faction">Faction:</label>
+                    <label for="faction">{{game_stats["field_one"]}}</label>
                     <select name="faction" id="faction" aria-label="Select faction">
-                        <option value="facts">Faction 1</option>
-                        <option value="faction2">Faction 2</option>
-                        <option value="faction3">Faction 3</option>
+                        {% for fill in game_stats["field_one_filler"] %}
+                        <option value="{{fill}}">{{fill}}</option>
+                        {% endfor %}
                     </select>
                 
                     <!-- Second Faction Selection -->
-                    <label for="second_faction">Second Faction:</label>
-                    <select name="second_faction" id="second_faction" aria-label="Select second faction">
-                        <option value="facts">Faction 1</option>
-                        <option value="faction2">Faction 2</option>
-                        <option value="faction3">Faction 3</option>
+                    <label for="second_faction">{{game_stats["field_two"]}}</label>
+                    <select name="second_faction" id="faction" aria-label="Select faction">
+                        {% for fill in game_stats["field_two_filler"] %}
+                        <option value="{{fill}}">{{fill}}</option>
+                        {% endfor %}
                     </select>
                 
                     <!-- Owned Before Radio Button -->
                     <fieldset>
-                        <legend>Lord Hero:</legend>
-                        <input type="radio" id="yes" name="lord_hero" value="yes" aria-label="Yes, the hero is a Lord">
+                        <legend>{{game_stats["field_three"]}}</legend>
+                        <input type="radio" id="yes" name="field_three" value="yes" aria-label="Yes">
                         <label for="yes">Yes</label><br>
-                        <input type="radio" id="no" name="lord_hero" value="no" aria-label="No, the hero is not a Lord">
+                        <input type="radio" id="no" name="field_three" value="no" aria-label="No">
                         <label for="no">No</label><br>
                     </fieldset>
 
@@ -78,7 +81,40 @@
                 <summary>
                     See the last ten records
                 </summary>
-                last ten records listed here, and a a link to the full table
+                {% if record_collection %}
+
+
+<table>
+    <tr>
+      <th>Game</th>
+      <th>Date Pulled</th>
+      <th>Character Name</th>
+      <th>Currency Used</th>
+      <th>Summon Event</th>
+      <th>Rarity</th>
+      <th>{{game_stats["field_one"]}}</th>
+      <th>{{game_stats["field_two"]}}</th>
+      <th>{{game_stats["field_three"]}}</th>
+      <th>Owned Already?</th>
+    </tr>
+    {% for record in record_collection %}
+    <tr>
+      <td>{{record.game_name}}</td>
+      <td>{{record.timestamp}}</td>
+      <td>{{record.character_name}}</td>
+      <td>{{record.currency_used}}</td>
+      <td>{{record.summon_type}}</td>
+      <td>{{record.character_rarity}}</td>
+      <td>{{record.character_faction}}</td>
+      <td>{{record.second_faction}}</td>
+      <td>{{record.lord_hero}}</td>
+      <td>{{record.owned_before}}</td>
+    </tr>
+    {% endfor %}
+    </table>
+
+{% endif %}
+
             </details>
             <details>
                 <summary>

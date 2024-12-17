@@ -6,15 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gacha Tracker</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.gif') }}">
 </head>
 
 <body>
     <div>
         <header class="flex-rows rows-spaced-between rows-aligned-centre">
-            <a href="{{ url_for("my_view.home")}}"><img src="/static/images/logo_long.png"></a>
+            <a href="{{ url_for('my_view.home')}}"><img src="/static/images/logo_long.png"></a>
             <nav class="roboto-medium">
-                <a href="{{ url_for("my_view.home")}}">Home </a>
-                <a href="{{ url_for("my_view.view_records")}}">View Records </a>
+                <a href="{{ url_for('my_view.home')}}">Home </a>
+                <a href="{{ url_for('my_view.view_records')}}">View Records </a>
                 <a href = "#">A Link </a>
                 <a href = "#">A Link </a>
             </nav>
