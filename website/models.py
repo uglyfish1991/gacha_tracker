@@ -5,7 +5,7 @@ from sqlalchemy import func
 class PullRecord(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     game_name = db.Column(db.String(300), nullable = False)
-    timestamp = db.Column(db.DateTime, nullable=False)
+    timestamp = db.Column(db.Date, nullable=False)
     currency_used = db.Column(db.String(300), nullable=False)
     summon_type = db.Column(db.String(300), nullable=False)
     character_name = db.Column(db.String(300), nullable=False)

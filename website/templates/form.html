@@ -1,15 +1,19 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
 <div class = "flex-rows rows-spaced-even form-area centred">
+
 <img src="/static/images/{{form_type}}_select.jpg">
+
 <div class = "right">
     <p>Put some general stats about the same here - what it is, how many summons I've done. Stuff like that.</p>
     <p>The game is {{game_stats["game_name"]}}</p>
+    
     <details>
-    <summary>
-        Click to enter a new record:
-    </summary>
+        <summary>
+            Click to enter a new record:
+        </summary>
             <form action ="/add_record" method = "POST" class = "record-submission roboto-medium">
 
                     <!-- Hidden field that sends the variable without showing it -->
@@ -77,45 +81,30 @@
                     <button type="submit">Submit Record</button>
                 </form>
             </details>
+
             <details>
                 <summary>
-                    See the last ten records
+                    View the last ten summons: 
                 </summary>
                 {% if record_collection %}
+                    <table>
+                        <tr>
+                            <th>Date Pulled</th>
+                            <th>Character Name</th>
+                            <th>Rarity</th>
+                        </tr>
+                        {% for record in record_collection %}
+                        <tr>
+                            <td>{{record.timestamp}}</td>
+                            <td>{{record.character_name}}</td>
+                            <td>{{record.character_rarity}}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                {% endif %}
+                <a href="/records/{{game_stats['game_name']}}">View all results for {{game_stats['game_name']}}</a>
+             </details>
 
-
-<table>
-    <tr>
-      <th>Game</th>
-      <th>Date Pulled</th>
-      <th>Character Name</th>
-      <th>Currency Used</th>
-      <th>Summon Event</th>
-      <th>Rarity</th>
-      <th>{{game_stats["field_one"]}}</th>
-      <th>{{game_stats["field_two"]}}</th>
-      <th>{{game_stats["field_three"]}}</th>
-      <th>Owned Already?</th>
-    </tr>
-    {% for record in record_collection %}
-    <tr>
-      <td>{{record.game_name}}</td>
-      <td>{{record.timestamp}}</td>
-      <td>{{record.character_name}}</td>
-      <td>{{record.currency_used}}</td>
-      <td>{{record.summon_type}}</td>
-      <td>{{record.character_rarity}}</td>
-      <td>{{record.character_faction}}</td>
-      <td>{{record.second_faction}}</td>
-      <td>{{record.lord_hero}}</td>
-      <td>{{record.owned_before}}</td>
-    </tr>
-    {% endfor %}
-    </table>
-
-{% endif %}
-
-            </details>
             <details>
                 <summary>
                     See some pull statistics!

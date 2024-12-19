@@ -31,7 +31,13 @@ def form_select():
 @my_view.route("/records")
 def view_records():
         record_collection = PullRecord.query.all()
-        return render_template("record.html", record_collection = record_collection,)
+        return render_template("record.html", record_collection = record_collection)
+
+@my_view.route("/records/<specific_game>")
+def view_specific_records(specific_game):
+        print(specific_game)
+        record_collection = PullRecord.query.filter_by(game_name=specific_game).all()
+        return render_template("record.html", record_collection = record_collection)
 
 @my_view.route("/add_record", methods = ["POST"])
 def add_wor():
