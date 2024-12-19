@@ -2,7 +2,7 @@
 
 {% block content %}
 
-
+<div class="record-area centred">
 
 {% if record_collection %}
 
@@ -15,10 +15,10 @@
       <th>Currency Used</th>
       <th>Summon Event</th>
       <th>Rarity</th>
-      <th>Main Faction</th>
-      <th>Second Faction</th>
-      <th>Lord?</th>
+      <th>Attribute 1</th>
+      <th>Attribute 2</th>
       <th>Owned Already?</th>
+      <th>Delete</th>
     </tr>
     {% for record in record_collection %}
     <tr>
@@ -27,15 +27,22 @@
       <td>{{record.character_name}}</td>
       <td>{{record.currency_used}}</td>
       <td>{{record.summon_type}}</td>
-      <td>{{record.character_rarity}}</td>
+      <td>{% for i in range(record.character_rarity) %}
+        <span class="fa fa-star checked"></span>
+        {% endfor %}
+      </td>
       <td>{{record.character_faction}}</td>
       <td>{{record.second_faction}}</td>
-      <td>{{record.lord_hero}}</td>
       <td>{{record.owned_before}}</td>
+      <td>
+        <a href="/delete/{{ record.id }}"><i class="fa fa-trash-o" style="font-size:36px"></i></a>
+      </td>
     </tr>
     {% endfor %}
     </table>
 
 {% endif %}
+
+</div>
 
 {% endblock %}

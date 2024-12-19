@@ -6,7 +6,7 @@
 
 <img src="/static/images/{{form_type}}_select.jpg">
 
-<div class = "right">
+<div class = "flex-grow-1">
     <p>Put some general stats about the same here - what it is, how many summons I've done. Stuff like that.</p>
     <p>The game is {{game_stats["game_name"]}}</p>
     
@@ -14,7 +14,8 @@
         <summary>
             Click to enter a new record:
         </summary>
-            <form action ="/add_record" method = "POST" class = "record-submission roboto-medium">
+        <div class="spacer"></div>
+            <form action ="/add_record" method = "POST" class = "record-submission flex-columns flex-grow-1 roboto-medium">
 
                     <!-- Hidden field that sends the variable without showing it -->
                     <input type="hidden" name="game_name" value="{{game_stats['game_name']}}">
@@ -42,12 +43,12 @@
                     <!-- Rarity Selection -->
                     <label for="rarity">Rarity:</label>
                     <select name="rarity" id="rarity" aria-label="Select rarity">
-                        <option value="two">**</option>
-                        <option value="three">***</option>
-                        <option value="four">****</option>
-                        <option value="five">*****</option>
+                        <option value="2">2-Star</option>
+                        <option value="3">3-Star</option>
+                        <option value="4">4-Star</option>
+                        <option value="5">5-Star</option>
                     </select>
-                
+
                     <!-- Faction Selection -->
                     <label for="faction">{{game_stats["field_one"]}}</label>
                     <select name="faction" id="faction" aria-label="Select faction">
@@ -63,7 +64,7 @@
                         <option value="{{fill}}">{{fill}}</option>
                         {% endfor %}
                     </select>
-                
+
                     <!-- Owned Before Radio Button -->
                     <fieldset>
                         <legend>{{game_stats["field_three"]}}</legend>
@@ -76,7 +77,7 @@
                     <!---Date Summon Completed-->
                     <label for="birthday">Date Summoned:</label>
                     <input type="date" id="summonDate" name="summon_date">
-                
+
                     <!-- Submit Button -->
                     <button type="submit">Submit Record</button>
                 </form>
@@ -86,6 +87,7 @@
                 <summary>
                     View the last ten summons: 
                 </summary>
+                <div class="spacer"></div>
                 {% if record_collection %}
                     <table>
                         <tr>
@@ -97,7 +99,9 @@
                         <tr>
                             <td>{{record.timestamp}}</td>
                             <td>{{record.character_name}}</td>
-                            <td>{{record.character_rarity}}</td>
+                            <td>{% for i in range(record.character_rarity) %}
+                                <span class="fa fa-star checked"></span>
+                                {% endfor %}</td>
                         </tr>
                         {% endfor %}
                     </table>
@@ -109,8 +113,9 @@
                 <summary>
                     See some pull statistics!
                 </summary>
+                <div class="spacer"></div>
                 pull stats like average pull between legendaries, most pulled hero etc
             </details>
-            </div>
-            </div>
+    </div>
+</div>
 {% endblock %}

@@ -56,3 +56,10 @@ def add_wor():
     db.session.add(new_record)
     db.session.commit()
     return redirect(url_for("my_view.home"))
+
+@my_view.route("/delete/<record_id>")
+def delete(record_id):
+    record = PullRecord.query.filter_by(id=record_id).first()
+    db.session.delete(record)
+    db.session.commit()
+    return redirect(url_for("my_view.records"))

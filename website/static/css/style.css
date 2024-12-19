@@ -37,30 +37,44 @@
 */
 body{
     margin: 0px;
-    background: rgb(227, 227, 227);
+    background: rgb(2,0,20);
+    background: linear-gradient(180deg, rgba(2,0,20,1) 0%, rgba(8,8,92,1) 54%, rgba(255,255,255,1) 54%);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
     box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: normal;
 }
 
 header{
-    background: rgb(13, 13, 58);
-    /* background: linear-gradient(0deg, rgba(2,0,20,1) 0%, rgba(8,8,92,1) 36%); */
     padding: 0px 60px;
     height: 23vh;
 }
 
+header img{
+    max-height: 21vh;
+}
+
 a{
-    padding: 0 7px; 
-    color: white;
     text-decoration: none;
 }
 
 nav > a {
+    padding: 0 7px; 
+    color: white;
     font-size: 1.2rem;
     border-right: solid 1px #eff0f1;
-  }
-  nav > a:last-of-type {
+}
+
+nav > a:hover {
+    color: lightskyblue;
+}
+
+nav > a:last-of-type {
     border-right: none;
-  }
+}
 
 h1{
     color: white;
@@ -74,6 +88,12 @@ details{
     padding: 20px;
     border-radius: 20px;
     box-shadow: 4px 4px 2px rgba(128, 128, 128, 0.195);
+}
+
+section{
+    background-color: #08085c;
+    color: white;
+    padding: 30px;
 }
 
 /* 
@@ -92,8 +112,17 @@ details{
     margin: 0 auto;
 }
 
+.centred-text{
+    text-align: center;
+}
+
 .flex-rows{
     display: flex;
+}
+
+.flex-columns{
+    display: flex;
+    flex-direction: column;
 }
 
 .rows-spaced-even{
@@ -107,6 +136,14 @@ details{
 .rows-aligned-centre{
     align-items: center;
 }
+
+.flex-grow-1{
+    flex-grow: 1
+}
+
+.spacer{
+    height: 20px;
+}
 /* 
 
 ------------------------------------------------------------------------------------------------------------
@@ -118,10 +155,6 @@ details{
 ------------------------------------------------------------------------------------------------------------ 
 
 */
-
-h1 img{
-    width: 50px;
-}
 
 .selection-area{
     width: 72%;
@@ -141,7 +174,7 @@ h1 img{
     cursor: pointer;
 }
 
-.form-area{
+.form-area, .record-area{
     max-height: 90vh;
     overflow: auto;
     width: 80%;
@@ -154,20 +187,48 @@ h1 img{
     margin-right: 30px;
 }
 
-.record-submission{
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-}
-
 .record-submission input, .record-submission select, .record-submission button{
     margin-bottom: 10px;
+    padding: 5px;
 }
 
-header img{
-    max-height: 21vh;
+.checked {
+    color: orange;
 }
 
-.right{
-    flex-grow: 1;
+
+/* 
+
+------------------------------------------------------------------------------------------------------------
+|                                                                                                          |
+|                                                                                                          |
+|                                         Table Styling                                                    |
+|                                                                                                          |
+|                                                                                                          |
+------------------------------------------------------------------------------------------------------------ 
+
+*/
+
+table{
+    border-collapse: collapse;
+    width: 100%;
+    margin: 20px 0;
+}
+  
+th{
+    text-align: center;
+    border: 1px solid #ddd;
+    padding: 8px;
+    background-color: #f2f2f2;
+}
+  
+
+td{
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+  
+tr:hover{
+    background-color: #f9f9f9;
 }

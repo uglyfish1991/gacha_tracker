@@ -9,7 +9,7 @@ class PullRecord(db.Model):
     currency_used = db.Column(db.String(300), nullable=False)
     summon_type = db.Column(db.String(300), nullable=False)
     character_name = db.Column(db.String(300), nullable=False)
-    character_rarity = db.Column(db.String(300), nullable=False)
+    character_rarity = db.Column(db.Integer, nullable=False)
     character_faction = db.Column(db.String(300), nullable=False)
     second_faction = db.Column(db.String(300), nullable=False)
     lord_hero = db.Column(db.Boolean, default = False)
