@@ -3,8 +3,13 @@ wor_info = {
     "field_one" : "Main Faction",
     "field_two" : "Secondary Faction",
     "field_three": "Is the character a Lord Hero?",
-    "currencies" : ["Diamonds", "Rare", "Ancient", "Legendary"],
-    "summon_event" : ["Invoccation of Spirits"],
+    "currencies" : ["Diamonds", "Rare Crystal", "Ancient Crystal", "Legendary Crystal"],
+    "summon_event" : [
+        "Invocation of Spirits",
+        "Crazy Invocation of Spirits",
+        "Surprise Invocation of Spirits",
+        "Crazy Divine Summoning"
+        ],
     "field_one_filler": [
         "The Watchguard",
         "The North Throne",
@@ -15,7 +20,8 @@ wor_info = {
         "The Esoteria Order",
         "The Chaos Dominion",
         "The Supreme Arbiters",
-        "The Unnamable"
+        "The Unnamable",
+        "None"
         ],
     "field_two_filler":[]
 }

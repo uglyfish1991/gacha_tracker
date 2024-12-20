@@ -175,9 +175,8 @@ section{
 }
 
 .form-area, .record-area{
-    max-height: 90vh;
-    overflow: auto;
-    width: 80%;
+    height: 90vh;
+    width: 90%;
     background-color: white;
     padding: 20px;
 }
@@ -228,7 +227,56 @@ td{
     padding: 8px;
     text-align: left;
 }
+
+tr{
+    background-color: white;
+}
   
 tr:hover{
     background-color: #f9f9f9;
 }
+
+
+/* --------------------------------------------------------------------------------------------------------- */
+/* Button styling from chatgpt */
+
+/* Basic Styles for the Submit Button */
+button.submit {
+    background-color: #007bff; /* Blue background */
+    color: #ffffff; /* White text */
+    border: none;
+    padding: 12px 20px; /* Adjust the padding */
+    font-size: 16px;
+    font-weight: 600; /* Slightly bolder text */
+    border-radius: 6px; /* Rounded corners */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  }
+  
+  /* Hover Effect */
+  button.submit:hover {
+    background-color: #0056b3; /* Darken background on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+  }
+  
+  /* Active State (when clicked) */
+  button.submit:active {
+    background-color: #004085; /* Darker blue on click */
+    transform: translateY(0); /* No lift when active */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Reduced shadow when clicked */
+  }
+  
+  /* Focused State (keyboard navigation) */
+  button.submit:focus {
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.5); /* Blue glow effect */
+  }
+  
+  /* Disabled Button State */
+  button.submit:disabled {
+    background-color: #d6d6d6; /* Light gray background */
+    color: #888; /* Darker gray text */
+    cursor: not-allowed; /* Prevent clicking */
+    box-shadow: none; /* Remove shadow */
+  }
