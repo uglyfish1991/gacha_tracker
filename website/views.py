@@ -28,7 +28,7 @@ def form_select():
     record_collection = PullRecord.query.filter_by(game_name=game_stats["game_name"]).limit(10).all()
     return render_template("form.html", form_type=form_type, game_stats = game_stats, record_collection=record_collection)
 
-@my_view.route("/records")
+@my_view.route("/records", endpoint='view_records')
 def view_records():
         record_collection = PullRecord.query.all()
         return render_template("record.html", record_collection = record_collection)
@@ -62,4 +62,4 @@ def delete(record_id):
     record = PullRecord.query.filter_by(id=record_id).first()
     db.session.delete(record)
     db.session.commit()
-    return redirect(url_for("my_view.records"))
+    return redirect(url_for("my_view.view_records"))
