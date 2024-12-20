@@ -9,6 +9,11 @@
 <div class = "flex-grow-1">
     <p>Put some general stats about the same here - what it is, how many summons I've done. Stuff like that.</p>
     <p>The game is {{game_stats["game_name"]}}</p>
+    {% if last_five_star %}
+    <p>It has been {{last_five_star}} summons since you last pulled a legendary hero on any method.</p>
+    {% else %}
+    <p> You have never recorded a legendary summon on this game!</p>
+    {% endif %}
     
     <details>
         <summary>
