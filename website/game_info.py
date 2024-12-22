@@ -8,9 +8,11 @@ wor_info = {
         "Invocation of Spirits",
         "Crazy Invocation of Spirits",
         "Surprise Invocation of Spirits",
+        "Lucky Pick Invocation",
         "Crazy Divine Summoning"
         ],
     "field_one_filler": [
+        "None",
         "The Watchguard",
         "The North Throne",
         "The Nightmare Council",
@@ -20,8 +22,7 @@ wor_info = {
         "The Esoteria Order",
         "The Chaos Dominion",
         "The Supreme Arbiters",
-        "The Unnamable",
-        "None"
+        "The Unnamable"
         ],
     "field_two_filler":[]
 }
@@ -59,7 +60,7 @@ omni_info = {
     "field_one" : "Faction",
     "field_two" : "Main Synergy",
     "field_three" : "Was this summon during a rebate?",
-    "currencies": ["Gems", "Oracle", "Ticket"], 
+    "currencies": ["Gems", "Oracle", "Ticket", "Daily Free"], 
     "summon_event" : ["Normal Summon", "Advanced Summon", "Synergy Summon", "Oath Recall", "Oracle Summon"],
     "field_one_filler" : [
         "Empire",
@@ -79,10 +80,3 @@ omni_info = {
         "None"
     ]
 }
-
-# advanced
-# normal
-# synergy
-# oath recall
-# oracle
-# diamonds
