@@ -3,6 +3,10 @@ from .models import PullRecord
 from . import db
 from .game_info import wor_info, genshin_info, omni_info
 from datetime import date
+import matplotlib
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt
+from sqlalchemy import func
 
 my_view = Blueprint("my_view", __name__)
 
@@ -13,6 +17,45 @@ def count_from_last_five_star(game):
           if record.character_rarity == 5:
                return counter
           
+def draw_example_graph(game):
+
+#----------------------------------------------------------------------------------------------------------------------------------------------
+#! Explaination for future me! 
+
+        #     # Query the database session to get the count of records for each character rarity
+        #* rarity_counts = db.session.query(
+        #     # Select the character_rarity field from the PullRecord model (the rarity of the character)
+        #*     PullRecord.character_rarity, 
+
+        #    # Count the number of records with each unique rarity
+        #*     func.count(PullRecord.id).label('count')  
+        #     # `func.count(PullRecord.id)` is used to count how many records match a particular rarity. 
+        #     # We label the count as 'count' to make it easier to reference in the result set.
+        #* ).filter_by(
+        #     # Filter the records to include only those that match the given game name
+        #*     game_name=game  
+        #     # The `filter_by(game_name=game)` ensures that only records from the specified `game_name` are included in the count.
+        #* ).group_by(
+        #     # Group the records by the `character_rarity` field to calculate the count for each rarity
+        #*     PullRecord.character_rarity  
+        #     # This groups the result set by the `character_rarity`, so that the count is calculated per rarity value.
+        #* ).all()
+        # # `all()` retrieves all the results and returns them as a list of tuples where each tuple is (rarity, count).
+
+#---------------------------------------------------------------------------------------------------------------------------------------------------
+    rarity_counts = db.session.query(PullRecord.character_rarity, func.count(PullRecord.id).label('count')).filter_by(game_name=game).group_by(PullRecord.character_rarity).all()
+    plt.style.use('ggplot')
+    rarities = [item[0] for item in rarity_counts]
+    counts = [item[1] for item in rarity_counts]
+    bar_colours = ["green", "blue", "purple", "gold"]
+    plt.bar(rarities, counts, color = bar_colours)
+    plt.xlabel('Character Rarity')
+    plt.xticks(rarities)
+    plt.ylabel('Count')
+    plt.title(f'Count of Characters by Rarity for {game}')
+    plt.savefig(f'website/static/images/rarity_frequency_plot.png', dpi=250)
+    plt.clf()
+
 
 @my_view.route("/")
 def home():
@@ -35,6 +78,7 @@ def form_select():
         form_type="other"
     record_collection = PullRecord.query.filter_by(game_name=game_stats["game_name"]).order_by(PullRecord.id.desc()).limit(10).all()
     last_five_star = count_from_last_five_star(game_stats["game_name"])
+    draw_example_graph(game_stats["game_name"])
     return render_template("form.html", form_type=form_type, game_stats = game_stats, record_collection=record_collection, last_five_star = last_five_star)
 
 @my_view.route("/records", endpoint='view_records')

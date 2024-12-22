@@ -176,7 +176,7 @@ section, footer{
 
 .form-area, .record-area{
     min-height: 90vh;
-    width: 90%;
+    width: 94%;
     background-color: white;
     padding: 20px;
 }
@@ -189,6 +189,14 @@ section, footer{
 .record-submission input, .record-submission select, .record-submission button{
     margin-bottom: 10px;
     padding: 5px;
+}
+
+.graph-area{
+    text-align: center;
+}
+
+.graph-area summary{
+    text-align: left;
 }
 
 .checked {

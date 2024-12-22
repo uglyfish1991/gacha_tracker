@@ -114,12 +114,12 @@
                 <a href="/records/{{game_stats['game_name']}}">View all results for {{game_stats['game_name']}}</a>
              </details>
 
-            <details>
+            <details class="graph-area">
                 <summary>
                     See some pull statistics!
                 </summary>
                 <div class="spacer"></div>
-                pull stats like average pull between legendaries, most pulled hero etc
+                <img src="{{url_for('static', filename='images/rarity_frequency_plot.png')}}">
             </details>
     </div>
 </div>
