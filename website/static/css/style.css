@@ -82,12 +82,20 @@ h1{
     font-size: 3rem;
 }
 
-details{
+details, blockquote{
     background-color: rgb(243, 243, 243);
     margin-bottom: 30px;
     padding: 20px;
-    border-radius: 20px;
+    border-radius: 2px;
     box-shadow: 4px 4px 2px rgba(128, 128, 128, 0.195);
+}
+
+details{
+    border-right: #08085c 7px solid;
+}
+
+details:hover{
+    border-right: lightskyblue 7px solid;
 }
 
 section, footer{
@@ -95,6 +103,11 @@ section, footer{
     color: white;
     padding: 30px;
 }
+
+/* blockquote{
+    background-color: rgb(243, 243, 243);
+    padding: 10px 30px;
+} */
 
 /* 
 

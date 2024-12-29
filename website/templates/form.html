@@ -7,8 +7,7 @@
 <img src="/static/images/{{form_type}}_select.jpg">
 
 <div class = "flex-grow-1">
-    <p>Put some general stats about the same here - what it is, how many summons I've done. Stuff like that.</p>
-    <p>The game is {{game_stats["game_name"]}}</p>
+    <blockquote><p>{{game_stats["game_blurb"]}}</p></blockquote>
     {% if last_five_star %}
     <p>It has been {{last_five_star}} summons since you last pulled a legendary hero on any method.</p>
     {% else %}
@@ -75,7 +74,7 @@
                         <legend>{{game_stats["field_three"]}}</legend>
                         <input type="radio" id="yes" name="field_three" value="yes" aria-label="Yes">
                         <label for="yes">Yes</label><br>
-                        <input type="radio" id="no" name="field_three" value="no" aria-label="No">
+                        <input type="radio" id="no" name="field_three" value="no" aria-label="No" checked>
                         <label for="no">No</label><br>
                     </fieldset>
 
