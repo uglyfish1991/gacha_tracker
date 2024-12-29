@@ -5,7 +5,17 @@
 
 <div class="record-area centred">
   <h2>All Records</h2>
-  Filter By Game:
+  <form action ="/filter_rarity" method = "POST">
+    <label for="rarity">Rarity:</label>
+    <select name="rarity" id="rarity" aria-label="Select rarity">
+        <option value="2">2-Star</option>
+        <option value="3">3-Star</option>
+        <option value="4">4-Star</option>
+        <option value="5">5-Star</option>
+        <option value="all">All</option>
+    </select>
+    <button type="submit" class="submit">Filter</button>
+  </form>
 {% if record_collection %}
 
 

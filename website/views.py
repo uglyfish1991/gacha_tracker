@@ -112,6 +112,18 @@ def add_wor():
     db.session.commit()
     return redirect(url_for("my_view.home"))
 
+@my_view.route("/filter_rarity", methods = ["POST"])
+def filter_rarity():
+    rarity_selected = request.form.get('rarity')
+    if rarity_selected == "all":
+         record_collection = PullRecord.query.all()
+    else:
+        record_collection = PullRecord.query.filter_by(character_rarity=rarity_selected).all()
+    record_collection.reverse()
+    return render_template("record.html", record_collection = record_collection)
+
+
+
 @my_view.route("/delete/<record_id>")
 def delete(record_id):
     record = PullRecord.query.filter_by(id=record_id).first()
