@@ -301,3 +301,11 @@ button.submit {
     cursor: not-allowed; /* Prevent clicking */
     box-shadow: none; /* Remove shadow */
   }
+
+  /* Style for the select element */
+select {
+    font-size: 16px;
+    padding: 10px;
+    width: 200px;
+    cursor: pointer;
+  }

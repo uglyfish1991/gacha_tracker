@@ -62,6 +62,7 @@ genshin_info = {
     ]
 }
 
+
 omni_info = {
     "game_name": "Onmiheroes",
     "game_blurb": "OmniHeroes is a fast-paced, hero collection RPG where players build powerful teams from a wide array of unique heroes to battle through various challenging scenarios. Set in a world under siege, players must strategically assemble their squad, each with distinct abilities and synergies, to defeat enemies and bosses. The game features exciting auto-battle mechanics, allowing for dynamic and hands-off combat. With regular updates, special events, and an expansive hero roster, OmniHeroes offers endless replayability. Its colorful graphics and engaging gameplay make it a must-play for fans of strategy and RPG games.",

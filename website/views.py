@@ -47,7 +47,22 @@ def draw_example_graph(game):
     plt.style.use('ggplot')
     rarities = [item[0] for item in rarity_counts]
     counts = [item[1] for item in rarity_counts]
-    bar_colours = ["green", "blue", "purple", "gold"]
+    if game=="Watcher of Realms" or game=="Genshin Impact":
+        colour_map = {
+                        2: "green",
+                        3: "blue",
+                        4: "purple",
+                        5: "gold"
+                        }
+    else:
+        colour_map = {
+                        2: "blue",
+                        3: "purple",
+                        4: "gold",
+                        5: "red"
+                        }
+         
+    bar_colours = [colour_map[rarity] for rarity in rarities]
     plt.bar(rarities, counts, color = bar_colours)
     plt.xlabel('Character Rarity')
     plt.xticks(rarities)
