@@ -13,6 +13,11 @@
     {% else %}
     <p> You have never recorded a legendary summon on this game!</p>
     {% endif %}
+    {% if average_between %}
+    <p>It takes you {{average_between}} pulls on average to get a legendary across all summons</p>
+    {% else %}
+    <p> You have never recorded a legendary summon on this game!</p>
+    {% endif %}
     
     <details>
         <summary>

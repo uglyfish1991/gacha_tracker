@@ -17,6 +17,22 @@ def count_from_last_five_star(game):
           if record.character_rarity == 5:
                return counter
           
+def average_pulls_for_legend(records):
+    print(records)
+    if records:
+        counts_between = []
+        counter = 0
+
+        for i in records:
+                if i.character_rarity != 5:
+                    counter +=1
+                else:
+                    counts_between.append(counter+1)
+                    counter = 0
+        return sum(counts_between)/len(counts_between)
+    else:
+          return None
+               
 def draw_example_graph(game):
 
 #----------------------------------------------------------------------------------------------------------------------------------------------
@@ -94,7 +110,8 @@ def form_select():
     record_collection = PullRecord.query.filter_by(game_name=game_stats["game_name"]).order_by(PullRecord.id.desc()).limit(10).all()
     last_five_star = count_from_last_five_star(game_stats["game_name"])
     draw_example_graph(game_stats["game_name"])
-    return render_template("form.html", form_type=form_type, game_stats = game_stats, record_collection=record_collection, last_five_star = last_five_star)
+    average_between = average_pulls_for_legend(record_collection)
+    return render_template("form.html", form_type=form_type, game_stats = game_stats, record_collection=record_collection, last_five_star = last_five_star, average_between = average_between)
 
 @my_view.route("/records", endpoint='view_records')
 def view_records():
